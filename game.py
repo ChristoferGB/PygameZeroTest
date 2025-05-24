@@ -36,8 +36,9 @@ music.play('background_music')
 gravity = 0.7
 jumpStrenght = -15
 initialPosition = (WIDTH // 2, HEIGHT - 100)
-hero = Actor('hero_front', initialPosition)
+hero = Actor('hero_front_a', initialPosition)
 hero.vy = 0
+heroJumpUpFrames = ['hero_front_a', 'hero_front_b']
 heroJumpRightFrames = ['hero_jump_right_a', 'hero_jump_right_b']
 heroJumpLeftFrames = ['hero_jump_left_a', 'hero_jump_left_b']
 heroFrameIndex = 0
@@ -206,7 +207,7 @@ def horizontalMove():
             hero.x = WIDTH - 35
         heroFrameTimer, heroFrameIndex = updatesAnimation(heroFrameTimer, heroFrameIndex, heroJumpRightFrames, hero)
     else:
-        hero.image = "hero_front"
+        heroFrameTimer, heroFrameIndex = updatesAnimation(heroFrameTimer, heroFrameIndex, heroJumpUpFrames, hero)
 
 def updatesAnimation(timer, index, frames, asset):
     timer += 1
